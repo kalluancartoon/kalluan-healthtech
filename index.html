@@ -22,11 +22,19 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            primary: '#003366',   /* Azul Profundo */
-                            secondary: '#666666', /* Cinza Técnico */
-                            accent: '#1E4D2B',    /* Verde Floresta */
-                            detail: '#40E0D0'     /* Turquesa */
+                        // Substituindo os azuis antigos pelas cores da marca
+                        blue: {
+                            600: '#003366', /* Azul Profundo (Botões/Destaques) */
+                            700: '#002244', /* Hover do Azul */
+                            900: '#001a33', /* Fundos escuros */
+                        },
+                        // Substituindo verdes/detalhes
+                        green: {
+                            500: '#1E4D2B', /* Verde Floresta (Accent) */
+                        },
+                        // Cor turquesa de detalhe
+                        cyan: {
+                            400: '#40E0D0',
                         }
                     },
                     fontFamily: {
@@ -47,65 +55,52 @@
         .hover-lift:hover { transform: translateY(-5px); }
     </style>
 </head>
-<body class="bg-gray-50 text-brand-secondary">
+<body class="bg-gray-50 text-gray-800">
 
     <header class="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-detail/10 to-transparent"></div>
-
-        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10">
+        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
             
-            <div class="w-full md:w-1/2 text-center md:text-left pt-10 md:pt-0">
-                
-                <div class="mb-8 flex justify-center md:justify-start">
-                    <img src="img/logo-header.png" alt="Kalluan Cartoon - HealthTech Solutions" class="h-16 md:h-20 object-contain">
+            <div class="w-full md:w-1/2 text-center md:text-left z-10 pt-10 md:pt-0">
+                <div class="inline-block bg-blue-100 text-[#003366] py-2 px-4 rounded-full text-sm font-bold mb-6 border border-blue-200 shadow-sm">
+                    <i class="fas fa-trophy text-yellow-500 mr-2"></i> Melhor TCC de Sistemas de Informação 2025
                 </div>
 
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start mb-6">
-                    <div class="inline-flex items-center bg-brand-primary/10 text-brand-primary py-1 px-3 rounded-full text-xs font-bold border border-brand-primary/20">
-                        <i class="fas fa-trophy text-yellow-500 mr-2"></i> Melhor TCC SI 2025
-                    </div>
-                    <div class="inline-flex items-center bg-brand-accent/10 text-brand-accent py-1 px-3 rounded-full text-xs font-bold border border-brand-accent/20">
-                        <i class="fas fa-file-signature mr-2"></i> INPI: Protocolado
-                    </div>
+                <div class="mb-4">
+                    <img src="img/logo-header.png" alt="Kalluan Cartoon" class="h-16 object-contain md:h-20 mx-auto md:mx-0">
                 </div>
                 
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-brand-primary">
-                    Transformando medicina <br>
-                    <span class="text-brand-detail">em código.</span>
-                </h1>
-                
-                <h2 class="text-xl md:text-2xl text-brand-secondary mb-8 font-light">
+                <h2 class="text-xl md:text-2xl text-gray-600 mb-8 font-light">
                     Healthtech Developer & Pesquisador
                 </h2>
                 
                 <p class="text-gray-500 mb-8 text-lg max-w-lg mx-auto md:mx-0">
-                    Especialista em <strong>Sistemas Especialistas (IA)</strong> para diagnóstico renal. Unindo a robustez do Python com a humanização do design.
+                    Transformando a saúde através da tecnologia. Especialista em <strong>Sistemas Desktop</strong>, Python e inovação hospitalar.
                 </p>
                 
                 <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start flex-wrap">
-                    <a href="#projetos" class="bg-brand-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#002244] transition shadow-lg text-center flex-grow md:flex-grow-0 border border-brand-primary">
+                    <a href="#projetos" class="bg-[#003366] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#002244] transition shadow-lg text-center">
                         Ver Projetos
                     </a>
                     
-                    <a href="docs/curriculo-kalluan.pdf" download class="bg-white text-brand-primary border border-brand-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition shadow-lg flex items-center justify-center gap-2 flex-grow md:flex-grow-0">
-                        <i class="fas fa-file-pdf"></i> CV
+                    <a href="docs/curriculo-kalluan.pdf" download class="bg-white text-[#003366] border border-[#003366] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fas fa-file-pdf"></i> Baixar CV
                     </a>
 
-                    <a href="http://lattes.cnpq.br/7267245059752858" target="_blank" class="bg-[#295595] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1a3a6e] transition shadow-lg flex items-center justify-center gap-2 flex-grow md:flex-grow-0 border border-[#295595]">
+                    <a href="http://lattes.cnpq.br/7267245059752858" target="_blank" class="bg-[#295595] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1a3a6e] transition shadow-lg flex items-center justify-center gap-2 border border-[#295595]">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="white"/>
                         </svg>
                         Lattes
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-brand-primary text-3xl hover:scale-110 transition flex items-center justify-center px-4">
+                    <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-[#003366] text-3xl flex items-center justify-center px-4 hover:scale-110 transition">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
             
             <div class="w-full md:w-1/2 mb-12 md:mb-0 relative flex justify-center">
-                <div class="absolute inset-0 bg-gradient-to-tr from-brand-detail/20 to-brand-primary/20 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-200 to-green-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
                 <img src="img/perfil-trofeu.jpg" alt="Kalluan Fiuza Premiado" class="relative z-10 rounded-2xl shadow-2xl w-4/5 md:w-3/4 border-4 border-white transform hover:scale-105 transition duration-500 object-cover">
             </div>
         </div>
@@ -114,8 +109,8 @@
     <section class="py-20 bg-gray-50" id="sobre">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-brand-primary">Minha Jornada</h3>
-                <div class="w-16 h-1 bg-brand-detail mx-auto mt-2 rounded"></div>
+                <h3 class="text-3xl font-bold text-gray-800">Minha Jornada</h3>
+                <div class="w-16 h-1 bg-[#003366] mx-auto mt-2 rounded"></div>
             </div>
             
             <div class="flex flex-col md:flex-row gap-12 items-center">
@@ -123,28 +118,31 @@
                     <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-white bg-black aspect-video relative hover-lift">
                         <iframe class="w-full h-full" 
                                 src="https://www.youtube.com/embed/V34Ef9st1j8" 
-                                title="Apresentação NephroDiag" frameborder="0" 
+                                title="Apresentação NephroDiag - Shorts" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                         </iframe>
                     </div>
+                    <p class="text-sm text-center text-gray-500 mt-3 italic">
+                        <i class="fas fa-play-circle mr-1"></i> Apresentação do NephroDiag a convite da Reitoria (Eniac).
+                    </p>
                 </div>
                 
                 <div class="w-full md:w-1/2 space-y-6">
-                    <p class="text-lg text-brand-secondary leading-relaxed">
+                    <p class="text-lg text-gray-700 leading-relaxed">
                         Minha paixão pela tecnologia na saúde nasceu de uma experiência pessoal. Após enfrentar a <strong>Síndrome Nefrótica</strong>, decidi usar a programação para facilitar o diagnóstico de doenças complexas.
                     </p>
-                    <p class="text-lg text-brand-secondary leading-relaxed">
-                        Graduado em <strong>Sistemas de Informação</strong> e pesquisador em Machine Learning, meu foco é migrar soluções Desktop para <strong>Web (SaaS)</strong>, criando sistemas de IA explicáveis (XAI).
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Graduado em <strong>Sistemas de Informação</strong> e hoje bolsista de Pós-Graduação em Machine Learning, meu foco é migrar soluções Desktop para <strong>Web (SaaS)</strong>, criando sistemas de IA acessíveis e explicáveis (XAI).
                     </p>
                     
                     <div class="grid grid-cols-2 gap-4 mt-6">
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-brand-primary hover-lift">
-                            <h4 class="font-bold text-xl text-brand-primary">1º Lugar</h4>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-[#003366]">
+                            <h4 class="font-bold text-xl text-[#003366]">1º Lugar</h4>
                             <p class="text-sm text-gray-600">Melhor TCC de SI 2025</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-brand-accent hover-lift">
-                            <h4 class="font-bold text-xl text-brand-accent">NephroIA</h4>
-                            <p class="text-sm text-gray-600">Futura Startup</p>
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-[#1E4D2B]">
+                            <h4 class="font-bold text-xl text-[#1E4D2B]">NephroIA</h4>
+                            <p class="text-sm text-gray-600">Futuro Projeto SaaS</p>
                         </div>
                     </div>
                 </div>
@@ -155,91 +153,110 @@
     <section class="py-20 bg-white" id="projetos">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-brand-primary">Portfólio & Soluções</h3>
-                <p class="text-brand-secondary mt-2">Tecnologia aplicada à vida real</p>
+                <h3 class="text-3xl font-bold text-gray-800">Portfólio & Projetos</h3>
+                <p class="text-gray-500 mt-2">Do Desktop para a Nuvem: Soluções Reais</p>
             </div>
 
-            <div class="bg-brand-primary rounded-3xl overflow-hidden shadow-2xl text-white mb-20 border border-brand-primary relative hover-lift">
-                <div class="absolute top-0 right-0 bg-yellow-500 text-brand-primary font-bold px-4 py-1 rounded-bl-lg z-20 shadow-lg">
+            <div class="bg-[#003366] rounded-3xl overflow-hidden shadow-2xl text-white mb-20 border border-gray-700 relative hover-lift">
+                <div class="absolute top-0 right-0 bg-yellow-500 text-gray-900 font-bold px-4 py-1 rounded-bl-lg z-20 shadow-lg">
                     <i class="fas fa-star"></i> Premiado
                 </div>
 
                 <div class="flex flex-col md:flex-row">
                     <div class="p-10 md:w-1/2 flex flex-col justify-center">
                         <div class="flex items-center gap-3 mb-4">
-                            <span class="bg-brand-detail text-brand-primary text-xs font-bold px-2 py-1 rounded">IA Simbólica (XAI)</span>
-                            <span class="bg-white/20 text-xs font-bold px-2 py-1 rounded text-white">PYTHON</span>
+                            <span class="bg-[#40E0D0] text-[#003366] text-xs font-bold px-2 py-1 rounded">XAI (IA Explicável)</span>
+                            <span class="bg-blue-800 text-xs font-bold px-2 py-1 rounded text-white">PYTHON</span>
                         </div>
                         <h3 class="text-4xl font-bold mb-2">NephroDiag</h3>
                         
-                        <div class="mb-4 bg-black/20 p-3 rounded-lg border border-white/10 flex items-center gap-3">
-                            <i class="fas fa-newspaper text-brand-detail text-xl"></i>
+                        <div class="mb-4 bg-blue-900/50 p-3 rounded-lg border border-blue-500/30 flex items-center gap-3">
+                            <i class="fas fa-newspaper text-[#40E0D0] text-xl"></i>
                             <div>
-                                <p class="text-xs text-brand-detail uppercase font-bold">Publicação Científica</p>
+                                <p class="text-xs text-[#40E0D0] uppercase font-bold">Publicação Científica</p>
                                 <p class="text-sm text-white">Artigo selecionado para a <strong>Revista Eniac LINK+</strong> (2026).</p>
                             </div>
                         </div>
 
-                        <p class="text-gray-200 mb-6 leading-relaxed">
-                            Sistema especialista para Windows/Linux. Utiliza a biblioteca <strong>Experta</strong> para fornecer diagnósticos "Caixa Branca".
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Sistema especialista para Windows/Linux. Utiliza a biblioteca <strong>Experta</strong> para fornecer diagnósticos baseados em regras ("Caixa Branca"). Software completo, com instalador (.exe) e interface amigável (CustomTkinter).
                         </p>
                         
+                        <ul class="space-y-2 mb-8 text-gray-400">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i> Diagnóstico Explicável (XAI)</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i> Propriedade Intelectual (INPI)</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i> Validado Academicamente</li>
+                        </ul>
+
                         <div class="flex flex-wrap gap-3">
-                            <a href="https://github.com/kalluancartoon/sistema-especialista-nephrodiag" target="_blank" class="bg-white text-brand-primary px-5 py-2 rounded-lg font-bold hover:bg-gray-100 transition text-sm flex items-center">
-                                <i class="fab fa-github mr-2"></i> Código Fonte
+                            <a href="#" target="_blank" class="bg-white text-[#003366] px-5 py-2 rounded-lg font-bold hover:bg-gray-100 transition text-sm flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i> Ler na Revista
                             </a>
-                            <a href="https://www.youtube.com/shorts/V34Ef9st1j8" target="_blank" class="border border-white text-white px-5 py-2 rounded-lg font-bold hover:bg-white/10 transition text-sm flex items-center">
-                                <i class="fas fa-play mr-2"></i> Ver Pitch
+                            <a href="https://github.com/kalluancartoon/sistema-especialista-nephrodiag" target="_blank" class="border border-gray-400 px-5 py-2 rounded-lg font-bold hover:border-white hover:text-white transition text-gray-300 text-sm flex items-center">
+                                <i class="fab fa-github mr-2"></i> Código
+                            </a>
+                            <a href="https://www.youtube.com/shorts/V34Ef9st1j8" target="_blank" class="bg-red-600 text-white px-5 py-2 rounded-lg font-bold hover:bg-red-700 transition text-sm flex items-center">
+                                <i class="fas fa-play mr-2"></i> Pitch
                             </a>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-gray-900 flex items-center justify-center p-0 md:p-6 overflow-hidden">
-                        <img src="img/print-nephrodiag.png" alt="Interface NephroDiag" class="w-full h-auto object-cover md:rounded-lg shadow-lg opacity-90 hover:opacity-100 transition">
+                    <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-0 md:p-6 overflow-hidden">
+                        <img src="img/print-nephrodiag.png" alt="Interface do NephroDiag" class="w-full h-auto object-cover md:rounded-lg shadow-lg opacity-90 hover:opacity-100 transition">
                     </div>
                 </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover-lift transition group relative">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group relative">
                     <div class="absolute top-4 right-4 bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded">
                         Em Desenvolvimento 🚀
                     </div>
-                    <div class="h-40 bg-gray-100 flex items-center justify-center border-b">
-                        <i class="fas fa-cloud-medical text-6xl text-brand-primary group-hover:scale-110 transition"></i>
+                    <div class="h-40 bg-purple-900 flex items-center justify-center">
+                        <i class="fas fa-brain text-6xl text-purple-400 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2 text-brand-primary">NephroIA (SaaS)</h4>
+                        <h4 class="font-bold text-xl mb-2">NephroIA (SaaS)</h4>
                         <p class="text-gray-600 text-sm mb-4">
-                            Evolução para Web. Foco em leitura automática de exames (OCR), integração FHIR e nuvem.
+                            Evolução do NephroDiag para a Web. Foco em leitura automática de exames (OCR) e acessibilidade em nuvem.
                         </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Web</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Machine Learning</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover-lift transition group">
-                    <div class="h-40 bg-gray-100 flex items-center justify-center border-b">
-                        <i class="fas fa-gamepad text-6xl text-brand-accent group-hover:scale-110 transition"></i>
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group">
+                    <div class="h-40 bg-[#1E4D2B] flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-green-300 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2 text-brand-primary">Gamificação na Saúde</h4>
+                        <h4 class="font-bold text-xl mb-2">Gamificação na Saúde</h4>
                         <p class="text-gray-600 text-sm mb-4">
-                            Jogo educativo em Construct para ensinar crianças sobre alimentação saudável.
+                            Jogo educativo em Construct para ensinar crianças sobre alimentação saudável e benefícios dos ingredientes.
                         </p>
-                        <a href="https://www.construct.net/en/free-online-games/profile/kalluan-cartoon-1626933" target="_blank" class="block w-full bg-brand-primary text-white py-2 rounded font-bold text-sm text-center hover:bg-brand-primary/90">
-                            Jogar Agora
-                        </a>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Construct</span>
+                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Educação</span>
+                        </div>
+                        <div class="flex gap-2">
+                             <a href="https://www.construct.net/en/free-online-games/profile/kalluan-cartoon-1626933" target="_blank" class="flex-1 bg-[#1E4D2B] text-white py-2 rounded font-bold text-sm text-center hover:bg-green-800">
+                                Jogar
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover-lift transition group">
-                    <div class="h-40 bg-gray-100 flex items-center justify-center border-b">
-                        <i class="fab fa-python text-6xl text-brand-secondary group-hover:scale-110 transition"></i>
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group">
+                    <div class="h-40 bg-gray-800 flex items-center justify-center">
+                        <i class="fab fa-github text-6xl text-gray-400 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2 text-brand-primary">Laboratório de Código</h4>
+                        <h4 class="font-bold text-xl mb-2">Laboratório de Código</h4>
                         <p class="text-gray-600 text-sm mb-4">
-                            Repositório central com scripts de automação, estudos de algoritmos e Open Source.
+                            Repositório central com scripts de automação, estudos de algoritmos e códigos Open Source.
                         </p>
-                        <a href="https://github.com/kalluancartoon" target="_blank" class="block w-full border border-brand-secondary text-brand-secondary py-2 rounded font-bold text-sm text-center hover:bg-brand-secondary hover:text-white transition">
+                        <a href="https://github.com/kalluancartoon" target="_blank" class="block w-full bg-gray-800 text-white py-2 rounded font-bold text-sm text-center hover:bg-gray-900">
                             Acessar GitHub
                         </a>
                     </div>
@@ -248,81 +265,80 @@
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50 border-t border-gray-200" id="artigos">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <span class="text-brand-accent font-bold tracking-widest uppercase text-sm">Produção Científica</span>
-                <h3 class="text-3xl font-bold text-brand-primary mt-2">Artigos & Publicações</h3>
-                <p class="text-brand-secondary mt-2">Contribuições para a ciência e tecnologia no SUS</p>
-            </div>
-
-            <div class="max-w-4xl mx-auto">
-                <a href="#" class="block bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition border-l-8 border-brand-detail hover-lift">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <span class="inline-block bg-brand-detail/10 text-brand-detail text-xs font-bold px-2 py-1 rounded mb-3 uppercase">
-                                Revista Eniac LINK+ (2026)
-                            </span>
-                            <h4 class="text-2xl font-bold text-brand-primary mb-3">
-                                A Importância da IA Explicável (XAI) no Diagnóstico Médico
-                            </h4>
-                            <p class="text-gray-600 leading-relaxed">
-                                Como algoritmos "Caixa Branca" podem aumentar a confiança de médicos no uso de inteligência artificial na Atenção Primária, garantindo rastreabilidade e ética no diagnóstico.
-                            </p>
-                        </div>
-                        <i class="fas fa-external-link-alt text-gray-300 ml-4 mt-2"></i>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-brand-primary text-white relative overflow-hidden" id="identidade">
-        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+    <section class="py-20 bg-[#003366] text-white relative overflow-hidden" id="identidade">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-16">
-                <span class="text-brand-detail font-bold tracking-widest uppercase text-sm">Nova Identidade</span>
+                <span class="text-[#40E0D0] font-bold tracking-widest uppercase text-sm">Identidade Corporativa</span>
                 <h3 class="text-4xl font-bold mt-2">Kalluan Cartoon</h3>
-                <p class="text-xl italic text-gray-300 mt-4 font-light">
+                <p class="text-xl italic text-blue-200 mt-4 font-light">
                     "Desenhando novas possibilidades de viver saudável e feliz."
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                    <i class="fas fa-heart text-4xl text-brand-detail mb-4"></i>
+            <div class="flex flex-col md:flex-row gap-12 items-start mb-16">
+                <div class="w-full md:w-1/2">
+                    <h4 class="text-2xl font-bold mb-4 border-l-4 border-[#1E4D2B] pl-4">A Nossa História</h4>
+                    <p class="text-blue-100 leading-relaxed text-lg">
+                        O nome <strong>Kalluan Cartoon</strong> nasce da união entre a identidade do criador e o propósito da criação. Acreditamos que programar é a forma moderna de desenhar realidades. Não escrevemos apenas linhas de código; desenhamos ferramentas inovadoras que permitem a médicos e pacientes visualizarem um futuro com mais saúde, precisão e bem-estar.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2 grid gap-6">
+                    <div class="bg-blue-800/50 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 transition">
+                        <h5 class="font-bold text-[#40E0D0] mb-2"><i class="fas fa-bullseye mr-2"></i> Missão</h5>
+                        <p class="text-sm text-blue-100">Transformar diagnósticos complexos em soluções acessíveis e humanas, unindo a precisão da ciência à clareza do design.</p>
+                    </div>
+                    <div class="bg-blue-800/50 p-6 rounded-lg border border-blue-700 hover:bg-blue-800 transition">
+                        <h5 class="font-bold text-blue-300 mb-2"><i class="fas fa-eye mr-2"></i> Visão</h5>
+                        <p class="text-sm text-blue-100">Ser referência em HealthTech no desenvolvimento de Sistemas Especialistas, onde a tecnologia antecipa diagnósticos e garante qualidade de vida.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="text-center p-6 hover:bg-blue-800 rounded-xl transition">
+                    <i class="fas fa-heart text-4xl text-[#40E0D0] mb-4"></i>
                     <h5 class="font-bold text-lg mb-2">Traço Humano</h5>
+                    <p class="text-xs text-blue-200">A tecnologia serve às pessoas. O foco é sempre o paciente.</p>
                 </div>
-                <div class="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
+                <div class="text-center p-6 hover:bg-blue-800 rounded-xl transition">
                     <i class="fas fa-lightbulb text-4xl text-yellow-400 mb-4"></i>
-                    <h5 class="font-bold text-lg mb-2">Inovação</h5>
+                    <h5 class="font-bold text-lg mb-2">Inovação Desenhada</h5>
+                    <p class="text-xs text-blue-200">Criatividade para resolver problemas antigos da medicina.</p>
                 </div>
-                <div class="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                    <i class="fas fa-shield-alt text-4xl text-brand-detail mb-4"></i>
-                    <h5 class="font-bold text-lg mb-2">Segurança</h5>
+                <div class="text-center p-6 hover:bg-blue-800 rounded-xl transition">
+                    <i class="fas fa-cogs text-4xl text-blue-400 mb-4"></i>
+                    <h5 class="font-bold text-lg mb-2">Precisão Técnica</h5>
+                    <p class="text-xs text-blue-200">Rigor científico, dados validados e proteção intelectual (INPI).</p>
                 </div>
-                <div class="text-center p-6 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition">
-                    <i class="fas fa-smile text-4xl text-brand-accent mb-4"></i>
-                    <h5 class="font-bold text-lg mb-2">Felicidade</h5>
+                <div class="text-center p-6 hover:bg-blue-800 rounded-xl transition">
+                    <i class="fas fa-smile text-4xl text-[#1E4D2B] mb-4"></i>
+                    <h5 class="font-bold text-lg mb-2">Felicidade Funcional</h5>
+                    <p class="text-xs text-blue-200">Sistemas que promovem saúde e felicidade.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-12">
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
         <div class="container mx-auto px-6 text-center">
             
-            <div class="flex justify-center mb-8">
-                <img src="img/logo-vertical.png" alt="Kalluan Cartoon - Desenhando novas possibilidades de viver saudável e feliz" class="h-32 object-contain">
+            <div class="mb-6">
+                <img src="img/logo-vertical.png" alt="Kalluan Cartoon" class="h-24 mx-auto object-contain bg-white/10 rounded-lg p-2">
             </div>
 
+            <h2 class="text-2xl font-bold mb-4">Kalluan Fiuza</h2>
+            <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                Pronto para colaborar com o <strong>InovaHC</strong>, <strong>Einstein</strong> e grandes centros de pesquisa em saúde.
+            </p>
+            
             <div class="flex justify-center gap-8 mb-8 items-center">
-                <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-3xl text-gray-400 hover:text-brand-primary transition transform hover:scale-110" title="LinkedIn">
+                <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-3xl text-gray-400 hover:text-blue-500 transition transform hover:scale-110" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
                 
-                <a href="https://github.com/kalluancartoon" target="_blank" class="text-3xl text-gray-400 hover:text-black transition transform hover:scale-110" title="GitHub">
+                <a href="https://github.com/kalluancartoon" target="_blank" class="text-3xl text-gray-400 hover:text-white transition transform hover:scale-110" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
                 
@@ -332,14 +348,13 @@
                     </svg>
                 </a>
 
-                <a href="mailto:kalluancartoon@gmail.com" class="text-3xl text-gray-400 hover:text-brand-accent transition transform hover:scale-110" title="E-mail">
+                <a href="mailto:kalluancartoon@gmail.com" class="text-3xl text-gray-400 hover:text-red-500 transition transform hover:scale-110" title="E-mail">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
             
-            <div class="text-sm text-gray-500 pt-8 border-t border-gray-100">
-                &copy; 2026 Kalluan Fiuza. <br>
-                <span class="text-brand-accent font-bold">INPI Protocolado.</span> Todos os direitos reservados.
+            <div class="text-sm text-gray-600 border-t border-gray-800 pt-8">
+                &copy; 2026 Kalluan Fiuza. <span class="text-[#1E4D2B] font-bold">INPI Protocolado.</span> Todos os direitos reservados.
             </div>
         </div>
     </footer>
