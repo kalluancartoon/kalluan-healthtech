@@ -15,7 +15,7 @@ Como pesquisador e desenvolvedor focado na área da saúde (**Healthtech**), des
 O site foi construído utilizando a filosofia **Mobile-First**, garantindo alta performance e acessibilidade em qualquer dispositivo.
 
 ### 🚀 Acesse Online
-👉 **[Clique aqui para ver o Portfólio ao vivo](https://kalluancartoon.github.io/kalluan-healthtech/#projetos)**
+👉 **[Clique aqui para ver o Portfólio ao vivo](https://kalluancartoon.com.br)**
 
 ---
 
