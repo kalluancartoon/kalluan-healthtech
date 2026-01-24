@@ -19,22 +19,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class', // Ativa o modo manual (Botão)
             theme: {
                 extend: {
                     colors: {
-                        // Substituindo os azuis antigos pelas cores da marca
-                        blue: {
-                            600: '#003366', /* Azul Profundo (Botões/Destaques) */
-                            700: '#002244', /* Hover do Azul */
-                            900: '#001a33', /* Fundos escuros */
-                        },
-                        // Substituindo verdes/detalhes
-                        green: {
-                            500: '#1E4D2B', /* Verde Floresta (Accent) */
-                        },
-                        // Cor turquesa de detalhe
-                        cyan: {
-                            400: '#40E0D0',
+                        brand: {
+                            primary: '#003366',   /* Azul Profundo */
+                            secondary: '#666666', /* Cinza Técnico */
+                            accent: '#1E4D2B',    /* Verde Floresta */
+                            detail: '#40E0D0',    /* Turquesa */
+                            dark: '#0f172a',      /* Fundo Dark Mode (Azul Noite) */
+                            cardDark: '#1e293b'   /* Fundo Cards Dark */
                         }
                     },
                     fontFamily: {
@@ -49,40 +44,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Poppins', sans-serif; transition: background-color 0.3s, color 0.3s; }
         html { scroll-behavior: smooth; }
         .hover-lift { transition: transform 0.3s ease; }
         .hover-lift:hover { transform: translateY(-5px); }
+        
+        /* Ajuste para inverter o logo preto para branco no modo noturno */
+        .dark .invert-logo { filter: brightness(0) invert(1); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 dark:bg-brand-dark dark:text-gray-200">
 
-    <header class="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
+    <button id="theme-toggle" class="fixed top-5 right-5 z-50 p-3 rounded-full bg-white dark:bg-brand-cardDark text-brand-primary dark:text-yellow-400 shadow-lg border border-gray-200 dark:border-gray-700 hover:scale-110 transition" title="Alternar Tema">
+        <i class="fas fa-moon dark:hidden"></i> <i class="fas fa-sun hidden dark:block"></i> </button>
+
+    <header class="min-h-screen flex items-center justify-center bg-white dark:bg-brand-dark relative overflow-hidden transition-colors">
         <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
             
             <div class="w-full md:w-1/2 text-center md:text-left z-10 pt-10 md:pt-0">
-                <div class="inline-block bg-blue-100 text-[#003366] py-2 px-4 rounded-full text-sm font-bold mb-6 border border-blue-200 shadow-sm">
+                <div class="inline-block bg-blue-100 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 py-2 px-4 rounded-full text-sm font-bold mb-6 border border-blue-200 dark:border-blue-800 shadow-sm">
                     <i class="fas fa-trophy text-yellow-500 mr-2"></i> Melhor TCC de Sistemas de Informação 2025
                 </div>
 
                 <div class="mb-4">
-                    <img src="img/logo-header.png" alt="Kalluan Cartoon" class="h-16 object-contain md:h-20 mx-auto md:mx-0">
+                    <img src="img/logo-header.png" alt="Kalluan Cartoon" class="h-16 object-contain md:h-20 mx-auto md:mx-0 dark:invert-logo transition">
                 </div>
                 
-                <h2 class="text-xl md:text-2xl text-gray-600 mb-8 font-light">
+                <h2 class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 font-light">
                     Healthtech Developer & Pesquisador
                 </h2>
                 
-                <p class="text-gray-500 mb-8 text-lg max-w-lg mx-auto md:mx-0">
+                <p class="text-gray-500 dark:text-gray-300 mb-8 text-lg max-w-lg mx-auto md:mx-0">
                     Transformando a saúde através da tecnologia. Especialista em <strong>Sistemas Desktop</strong>, Python e inovação hospitalar.
                 </p>
                 
                 <div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start flex-wrap">
-                    <a href="#projetos" class="bg-[#003366] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#002244] transition shadow-lg text-center">
+                    <a href="#projetos" class="bg-[#003366] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#002244] transition shadow-lg text-center border border-[#003366] dark:border-blue-400">
                         Ver Projetos
                     </a>
                     
-                    <a href="docs/curriculo-kalluan.pdf" download class="bg-white text-[#003366] border border-[#003366] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition shadow-lg flex items-center justify-center gap-2">
+                    <a href="docs/curriculo-kalluan.pdf" download class="bg-white dark:bg-transparent text-[#003366] dark:text-white border border-[#003366] dark:border-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-white/10 transition shadow-lg flex items-center justify-center gap-2">
                         <i class="fas fa-file-pdf"></i> Baixar CV
                     </a>
 
@@ -93,7 +94,7 @@
                         Lattes
                     </a>
                     
-                    <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-[#003366] text-3xl flex items-center justify-center px-4 hover:scale-110 transition">
+                    <a href="https://www.linkedin.com/in/kalluan-c-fiuza-b5a17b221/" target="_blank" class="text-[#003366] dark:text-white text-3xl flex items-center justify-center px-4 hover:scale-110 transition">
                         <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
@@ -101,48 +102,48 @@
             
             <div class="w-full md:w-1/2 mb-12 md:mb-0 relative flex justify-center">
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-200 to-green-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                <img src="img/perfil-trofeu.jpg" alt="Kalluan Fiuza Premiado" class="relative z-10 rounded-2xl shadow-2xl w-4/5 md:w-3/4 border-4 border-white transform hover:scale-105 transition duration-500 object-cover">
+                <img src="img/perfil-trofeu.jpg" alt="Kalluan Fiuza Premiado" class="relative z-10 rounded-2xl shadow-2xl w-4/5 md:w-3/4 border-4 border-white dark:border-gray-700 transform hover:scale-105 transition duration-500 object-cover">
             </div>
         </div>
     </header>
 
-    <section class="py-20 bg-gray-50" id="sobre">
+    <section class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors" id="sobre">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-gray-800">Minha Jornada</h3>
-                <div class="w-16 h-1 bg-[#003366] mx-auto mt-2 rounded"></div>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">Minha Jornada</h3>
+                <div class="w-16 h-1 bg-[#003366] dark:bg-brand-detail mx-auto mt-2 rounded"></div>
             </div>
             
             <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="w-full md:w-1/2">
-                    <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-white bg-black aspect-video relative hover-lift">
+                    <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-700 bg-black aspect-video relative hover-lift">
                         <iframe class="w-full h-full" 
                                 src="https://www.youtube.com/embed/V34Ef9st1j8" 
                                 title="Apresentação NephroDiag - Shorts" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                         </iframe>
                     </div>
-                    <p class="text-sm text-center text-gray-500 mt-3 italic">
+                    <p class="text-sm text-center text-gray-500 dark:text-gray-400 mt-3 italic">
                         <i class="fas fa-play-circle mr-1"></i> Apresentação do NephroDiag a convite da Reitoria (Eniac).
                     </p>
                 </div>
                 
                 <div class="w-full md:w-1/2 space-y-6">
-                    <p class="text-lg text-gray-700 leading-relaxed">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                         Minha paixão pela tecnologia na saúde nasceu de uma experiência pessoal. Após enfrentar a <strong>Síndrome Nefrótica</strong>, decidi usar a programação para facilitar o diagnóstico de doenças complexas.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                         Graduado em <strong>Sistemas de Informação</strong> e hoje bolsista de Pós-Graduação em Machine Learning, meu foco é migrar soluções Desktop para <strong>Web (SaaS)</strong>, criando sistemas de IA acessíveis e explicáveis (XAI).
                     </p>
                     
                     <div class="grid grid-cols-2 gap-4 mt-6">
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-[#003366]">
-                            <h4 class="font-bold text-xl text-[#003366]">1º Lugar</h4>
-                            <p class="text-sm text-gray-600">Melhor TCC de SI 2025</p>
+                        <div class="bg-white dark:bg-brand-cardDark p-4 rounded-lg shadow border-l-4 border-[#003366]">
+                            <h4 class="font-bold text-xl text-[#003366] dark:text-blue-400">1º Lugar</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Melhor TCC de SI 2025</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-[#1E4D2B]">
-                            <h4 class="font-bold text-xl text-[#1E4D2B]">NephroIA</h4>
-                            <p class="text-sm text-gray-600">Futuro Projeto SaaS</p>
+                        <div class="bg-white dark:bg-brand-cardDark p-4 rounded-lg shadow border-l-4 border-[#1E4D2B]">
+                            <h4 class="font-bold text-xl text-[#1E4D2B] dark:text-green-400">NephroIA</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Futuro Projeto SaaS</p>
                         </div>
                     </div>
                 </div>
@@ -150,14 +151,14 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white" id="projetos">
+    <section class="py-20 bg-white dark:bg-brand-dark transition-colors" id="projetos">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h3 class="text-3xl font-bold text-gray-800">Portfólio & Projetos</h3>
-                <p class="text-gray-500 mt-2">Do Desktop para a Nuvem: Soluções Reais</p>
+                <h3 class="text-3xl font-bold text-gray-800 dark:text-white">Portfólio & Projetos</h3>
+                <p class="text-gray-500 dark:text-gray-400 mt-2">Do Desktop para a Nuvem: Soluções Reais</p>
             </div>
 
-            <div class="bg-[#003366] rounded-3xl overflow-hidden shadow-2xl text-white mb-20 border border-gray-700 relative hover-lift">
+            <div class="bg-[#003366] dark:bg-blue-900 rounded-3xl overflow-hidden shadow-2xl text-white mb-20 border border-gray-700 relative hover-lift">
                 <div class="absolute top-0 right-0 bg-yellow-500 text-gray-900 font-bold px-4 py-1 rounded-bl-lg z-20 shadow-lg">
                     <i class="fas fa-star"></i> Premiado
                 </div>
@@ -207,37 +208,37 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group relative">
-                    <div class="absolute top-4 right-4 bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded">
+                <div class="bg-white dark:bg-brand-cardDark rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition group relative">
+                    <div class="absolute top-4 right-4 bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-200 text-xs font-bold px-2 py-1 rounded">
                         Em Desenvolvimento 🚀
                     </div>
                     <div class="h-40 bg-purple-900 flex items-center justify-center">
                         <i class="fas fa-brain text-6xl text-purple-400 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">NephroIA (SaaS)</h4>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h4 class="font-bold text-xl mb-2 dark:text-white">NephroIA (SaaS)</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
                             Evolução do NephroDiag para a Web. Foco em leitura automática de exames (OCR) e acessibilidade em nuvem.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Web</span>
-                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Machine Learning</span>
+                            <span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-bold text-gray-600 dark:text-gray-300">Web</span>
+                            <span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-bold text-gray-600 dark:text-gray-300">Machine Learning</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group">
+                <div class="bg-white dark:bg-brand-cardDark rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition group">
                     <div class="h-40 bg-[#1E4D2B] flex items-center justify-center">
                         <i class="fas fa-gamepad text-6xl text-green-300 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">Gamificação na Saúde</h4>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h4 class="font-bold text-xl mb-2 dark:text-white">Gamificação na Saúde</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
                             Jogo educativo em Construct para ensinar crianças sobre alimentação saudável e benefícios dos ingredientes.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Construct</span>
-                            <span class="text-xs bg-gray-100 px-2 py-1 rounded font-bold text-gray-600">Educação</span>
+                            <span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-bold text-gray-600 dark:text-gray-300">Construct</span>
+                            <span class="text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded font-bold text-gray-600 dark:text-gray-300">Educação</span>
                         </div>
                         <div class="flex gap-2">
                              <a href="https://www.construct.net/en/free-online-games/profile/kalluan-cartoon-1626933" target="_blank" class="flex-1 bg-[#1E4D2B] text-white py-2 rounded font-bold text-sm text-center hover:bg-green-800">
@@ -247,16 +248,16 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition group">
+                <div class="bg-white dark:bg-brand-cardDark rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 overflow-hidden hover:shadow-2xl transition group">
                     <div class="h-40 bg-gray-800 flex items-center justify-center">
                         <i class="fab fa-github text-6xl text-gray-400 group-hover:scale-110 transition"></i>
                     </div>
                     <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">Laboratório de Código</h4>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <h4 class="font-bold text-xl mb-2 dark:text-white">Laboratório de Código</h4>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
                             Repositório central com scripts de automação, estudos de algoritmos e códigos Open Source.
                         </p>
-                        <a href="https://github.com/kalluancartoon" target="_blank" class="block w-full bg-gray-800 text-white py-2 rounded font-bold text-sm text-center hover:bg-gray-900">
+                        <a href="https://github.com/kalluancartoon" target="_blank" class="block w-full bg-gray-800 text-white py-2 rounded font-bold text-sm text-center hover:bg-gray-900 transition">
                             Acessar GitHub
                         </a>
                     </div>
@@ -265,7 +266,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-[#003366] text-white relative overflow-hidden" id="identidade">
+    <section class="py-20 bg-[#003366] text-white relative overflow-hidden transition-colors" id="identidade">
         <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         
         <div class="container mx-auto px-6 relative z-10">
@@ -321,14 +322,14 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800 transition-colors">
         <div class="container mx-auto px-6 text-center">
             
             <div class="mb-6">
                 <img src="img/logo-full-vertical.png" alt="Kalluan Cartoon" class="h-24 mx-auto object-contain bg-white/10 rounded-lg p-2">
             </div>
 
-            <h2 class="text-2xl font-bold mb-4">Kalluan Cartoon</h2>
+            <h2 class="text-2xl font-bold mb-4">Kalluan Fiuza</h2>
             <p class="text-gray-400 mb-8 max-w-lg mx-auto">
                 Pronto para colaborar com o <strong>InovaHC</strong>, <strong>Einstein</strong> e grandes centros de pesquisa em saúde.
             </p>
@@ -359,5 +360,26 @@
         </div>
     </footer>
 
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // 1. Verifica se já tem preferência salva
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // 2. Função de Clique no Botão
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+    </script>
 </body>
 </html>
